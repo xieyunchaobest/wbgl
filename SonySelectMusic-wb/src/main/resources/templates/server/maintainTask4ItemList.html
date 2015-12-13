@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>维修项</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/app/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/app/css/bootstrap-theme.min.css}" />
+<link rel="stylesheet" th:href="@{/app/css/font-awesome.min.css}" />
+<link rel="stylesheet" th:href="@{/app/css/bootstrap-datetimepicker.css}" />
+
+<script th:src="@{/app/js/vendor/jquery-1.11.1.js}"></script>
+<script th:src="@{/app/js/vendor/bootstrap.min.js}"></script>
+<script th:src="@{/app/js/vendor/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/app/validation/jquery.validate.min.js}"></script>
+<script th:src="@{/app/js/public.js}"></script>
+
+<script type="text/javascript">
+  	
+</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<form id="orderByForm1"   method="post">
+			<div id="tbdata" style="width:100%;overflow: scroll">
+			<table class="table table-bordered table-striped" style="width:2300px">
+				<thead>
+					<tr>
+						<th style="width:100px">维修归类</th>
+						<th style="width:120px">维修项</th>
+						<th style="width:200px">维修内容</th>
+						<th style="width:100px">物业管家</th>
+						<th style="width:100px">接单人</th>
+						<th style="width:100px">区域负责人</th>
+						<th style="width:100px">回访人</th>
+						<th style="width:200px">工程单位</th>
+						<th style="width:100px">备料员</th>
+						<th style="width:150px">预约进场时间</th>
+						<th style="width:150px">实际进场时间</th>
+						<th style="width:150px" >要求完成时间</th>
+						<th style="width:150px">实际完成时间</th>
+						<th style="width:100px">时长</th>
+						<th style="width:100px">是否超期</th>
+						<th style="width:100px">状态</th>
+						<th style="width:100px">备注</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width:80px">空调</td>
+						<td style="width:80px">空调改造</td>
+						<td style="width:80px">空调坏了，需要改造</td>
+						<td style="width:80px">李晚芳</td>
+						<td>王成换</td>
+						<td>马志双 </td>
+						<td>周式盛</td>
+						<td>板桥施工一分队 </td>
+						<td>刘若通</td>
+						<td>2015-12-12 09：00</td>
+						<td>2015-12-12 09：00</td>
+						<td>2015-12-16 17：00</td>
+						<td>2015-12-16 17：00</td>
+						<td>3</td>
+						<td>否</td>
+						<td>完成</td>
+						<td>无</td>
+					</tr>
+					<tr>
+						<td style="width:80px">壁纸</td>
+						<td style="width:80px">维修空调回复</td>
+						<td style="width:80px">空调维修空调回复</td>
+						<td style="width:80px">王志明</td>
+						<td>王成换</td>
+						<td>马志双 </td>
+						<td>周式盛</td>
+						<td>板桥施工一分队 </td>
+						<td>刘若通</td>
+						<td>2015-12-17 09：00</td>
+						<td>2015-12-18 09：00</td>
+						<td>2015-12-17 17：00</td>
+						<td>2015-12-18 17：00</td>
+						<td>3</td>
+						<td>否</td>
+						<td>完成</td>
+						<td>无</td>
+					</tr>
+				</tbody>
+			</table> 
+		</div>
+	</form>
+	</div>
+
+</body>
+<script th:inline="javascript">
+        /*<![CDATA[*/
+            $('#startTime').datetimepicker({
+                autoclose:true,
+                todayHighlight:true,
+                format: 'yyyy-mm-dd',
+                pickDate: true,  
+                pickTime: false,
+                minView:2
+            });
+        
+            $('#endTime').datetimepicker({
+                autoclose:true,
+                todayHighlight:true,
+                format: 'yyyy-mm-dd',
+                pickDate: true,  
+                pickTime: false ,
+                minView:2
+            });
+            
+            
+            
+        /*]]>*/
+    </script>
+</html>

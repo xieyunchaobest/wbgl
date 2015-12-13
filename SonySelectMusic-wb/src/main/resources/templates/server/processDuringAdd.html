@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	 <script type="text/javascript">
+	 $().ready(function() {
+		 formValidate();
+	 }); 
+	 
+	 function formValidate(){
+		 $("#aform").validate({
+		     	focusInvalid:false	, 
+		     	rules : {
+		     		"name":{
+		     			required:true 
+		     		} , 
+		     		"phone":{
+		     			required:true 
+		     		} , 
+		     		"kmCount":{
+		     			required:true,
+		     			number:true
+		     		},
+		     		"afile":{
+		     			required:$("#carId").val()=='0'
+		     		} 
+		     	},
+		         messages: {
+		             
+		         }
+		     });
+	 }
+	 
+	 
+	 function save(){ 
+		   var path = basePath+"/server/saveWorker";  
+			$('#aform').attr("action", path).submit(); 
+	 }
+	 
+	 function changeRole(target){
+		 if($(target).val()=='2'){
+			 $("#sdf").show();
+			 $("#asdf").show();
+		 }
+	 }
+	 
+    </script> 
+</head>
+
+<form id="aform" th:action="@{/server/saveWorker}"  method="post" enctype="multipart/form-data"  >
+	<div style="display:none">
+		<input type="text" id="id" name="id" maxlength="100"  />
+	</div>
+
+	 <div id="userAdd">
+	 	<table class="table table-bordered table-striped" >
+	 		<tr>
+	 			<td align="right" width="100px">类别：</td>
+	 			<td width="150px">
+	<select  name="maintainType" id="maintainType" style="height:30px;width:120px" >
+		 				<option value="1">衣柜</option>
+		 				<option value="2">木门</option>
+		 				<option value="">木饰面</option>
+		 				<option value="">壁纸</option>
+		 				<option value="">木地板</option>
+		 				<option value="">橱柜</option>
+		 				<option value="">精装其他</option>
+		 				<option value="">吊顶</option>
+		 				<option value="">石材</option>
+		 				<option value="">空调</option>
+					</select>
+	</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right" width="100px">维修项：</td>
+	 			<td width="150px">
+	 			 	<input type="text" />
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right" width="100px">时间（天）：</td>
+	 			<td width="150px">
+	 				<input type="text" />
+	 			</td>
+	 		</tr>
+	 	</table>
+	 </div>
+</form>
+    
+</html>

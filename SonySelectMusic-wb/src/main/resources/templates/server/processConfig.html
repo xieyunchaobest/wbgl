@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>流程</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/app/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/app/css/bootstrap-theme.min.css}" />
+<link rel="stylesheet" th:href="@{/app/css/font-awesome.min.css}" />
+
+<script th:src="@{/app/js/vendor/jquery-1.11.1.js}"></script>
+<script th:src="@{/app/js/vendor/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/app/validation/jquery.validate.min.js}"></script>
+<script th:inline="javascript" th:src="@{/app/js/commonSort.js}"></script>
+<script th:inline="javascript" th:src="@{/app/js/commonPage.js}"></script>
+<script th:src="@{/app/js/public.js}"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<div class="container-fluid" style="margin-top:15px">
+		<form id="orderByForm" th:action="@{/server/updateConfig}" method="post">
+			<input type="hidden" id="orderByStr" name="orderByStr"   th:value="${orderBy}"/>
+		 
+		 <div id="tbdata">
+			<table class="table table-bordered table-striped" >
+				<tbody>
+					<tr>
+						<td>通知方式</td>
+						<td>
+							<input type="checkbox"  checked="true"   />消息推送&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="checkbox"  checked="true"    />手机短信&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+						</td>
+					</tr>
+					<tr>
+						<td>通知时间</td>
+						<td>
+							<input type="checkbox"  checked="true"    />即时通知责任人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="checkbox"  checked="true"    />即将超期时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+							<input type="checkbox"  checked="true"    />超期后每天通知责任人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+						</td>
+					</tr>
+					<tr>
+						<td>超时设置</td>
+						<td>
+							超时<input type="text" size="5" value="1"/> 天后通知区域负责人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							超时<input type="text" size="5" value="3"/> 天后通知维保部副经理<br/>
+							超时<input type="text" size="5" value="5"/> 天后通知维保部经理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							超时<input type="text" size="5" value="7"/> 天后通知总监<br/>
+							VIP客户提前<input type="text" size="5" value="1"/>  天通知&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							抢修流程提前<input type="text" size="5" value="1"/>  天通知
+						</td>
+					</tr>
+					<tr>
+						<td>VIP、抢修设置</td>
+						<td>
+							<input type="checkbox"  checked="true"    />区域负责人实时关注VIP维修流程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="checkbox"  checked="true"    />VIP客户作为抢修来处理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td>回访设置</td>
+						<td>
+							 <input type="checkbox"  checked="true"    />上门施工前短信通知客户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							 <input type="checkbox"  checked="true"    />对所有客户进行回访问卷&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							 <input type="checkbox"  checked="true"    />只对VIP进行回访问卷
+						</td>
+					</tr>
+				</tbody>
+			</table> 
+			<div style="width:200px;margin:0 auto;text-align:center">
+				 <button type="submit" id="submit" class="btn btn-primary"  style="margin:0 auto;text-align:center">确定</button>
+			</div>
+		</div>
+	</form>
+	
+	</div>
+
+
+</body>
+</html>
