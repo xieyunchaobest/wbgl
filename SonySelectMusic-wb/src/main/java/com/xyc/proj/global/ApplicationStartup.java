@@ -1,6 +1,8 @@
 package com.xyc.proj.global;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.context.ApplicationListener;
@@ -15,6 +17,7 @@ public class ApplicationStartup implements ApplicationListener<ContextRefreshedE
     public void onApplicationEvent(ContextRefreshedEvent event) {
     	Properties prop =event.getApplicationContext().getBean(Properties.class);
     	 Constants.userMap=initUsers();
+    	 Constants.processNameList=initProcessNameList();
     }
    
     private Map initUsers() {
@@ -58,5 +61,21 @@ public class ApplicationStartup implements ApplicationListener<ContextRefreshedE
 		 
 		 return userMap;
 	 }
+    
+    public List initProcessNameList() {
+    	List list=new ArrayList();
+    	String m1="开始";
+    	String m2="统一接单";
+    	String m3="现场看擦";
+    	String m4="制定维修方案";
+    	
+    	list.add(m1);
+    	list.add(m2);
+    	list.add(m3);
+    	list.add(m4);
+    	
+    	
+    	return list;
+    }
     
 }

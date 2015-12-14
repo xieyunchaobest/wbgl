@@ -1,6 +1,8 @@
 package com.xyc.proj.global;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.xyc.proj.pay.Configure;
@@ -14,6 +16,7 @@ import com.xyc.proj.pay.Configure;
 public class Constants {
 	
 	public static Map userMap=new HashMap();
+	public static List processNameList=new ArrayList();
 	
 	public static final String URL_PRE_PAY="https://api.mch.weixin.qq.com/pay/unifiedorder";
 		public static final String certLocalPath="/home/diuser/resource/apiclient_cert.p12";

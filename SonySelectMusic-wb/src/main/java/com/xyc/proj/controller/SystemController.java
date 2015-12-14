@@ -3,16 +3,15 @@
  */
 package com.xyc.proj.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.xyc.proj.entity.ProcessItem;
 import com.xyc.proj.entity.SysUser;
 import com.xyc.proj.global.Constants;
 
@@ -22,6 +21,7 @@ import com.xyc.proj.global.Constants;
  *
  */
 @Controller
+@SessionAttributes("user")
 public class SystemController {
 	
 	 @RequestMapping("/server/doLogin")
@@ -29,8 +29,7 @@ public class SystemController {
 	            @RequestParam(value = "code", required = false) String code,
 	            HttpSession session,Model model) {
 		 SysUser su=(SysUser)Constants.userMap.get(code);
-		 session.setAttribute("user", su);
-		 session.setMaxInactiveInterval(3600);
+		 model.addAttribute("user", su);
 		 return "redirect:/server/index.html";
 	 }
 	 
@@ -39,9 +38,10 @@ public class SystemController {
 	 public String index(
 	            @RequestParam(value = "code", required = false) String code,
 	            Model model, HttpSession session) {
-		 SysUser su=(SysUser)session.getAttribute("user");
-		 
-		 model.addAttribute("user", su);
+		 //SysUser su=(SysUser)session.getAttribute("user");
+		 SysUser user = (SysUser) model.asMap().get("user");
+		 model.addAttribute("user", user);
+		 session.setAttribute("taskCount", getTask(session));
 		 return "server/index";
 	 }
 	 
@@ -106,4 +106,18 @@ public class SystemController {
 		 return "server/teamAdd";
 	 }
 
+	 //查询代办任务数量 
+	 private int getTask(HttpSession session) {
+		 SysUser su=(SysUser)session.getAttribute("user");
+		 if(su==null)return 0;
+		 String uname=su.getUserName();
+		 ProcessItem p=(ProcessItem)session.getAttribute("process");
+		 if(p==null)return 0;
+		 if(uname.equals(p.getActor())) {
+			 return 1;
+		 }
+		 return 0;
+	 }
+	 
+	 
 }
