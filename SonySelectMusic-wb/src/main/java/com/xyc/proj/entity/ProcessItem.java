@@ -11,7 +11,7 @@ public class ProcessItem {
 	private String maintainItem;
 	private String isEmergency;
 	private String remarks;
-	private String wgyj;
+	private String wgyj="";
 	private String pillRecevicePerson;
 	private String areaLeader;
 	private String surveryPerson;

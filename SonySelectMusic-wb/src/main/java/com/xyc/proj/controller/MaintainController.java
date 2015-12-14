@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -28,7 +29,6 @@ import com.xyc.proj.utility.StringUtil;
  *
  */
 @Controller
-@SessionAttributes("user")
 public class MaintainController {
 	
 	 @RequestMapping("/server/maintainTaskQuery.html")
@@ -47,63 +47,60 @@ public class MaintainController {
 	 @RequestMapping("/server/maintainTask4ItemList.html")
 	 public String maintainTask4ItemList(
 	            HttpSession session,Model model) {
+		
 		 return "server/maintainTask4ItemList";
 	 }
 	 
 	 
 	 @RequestMapping("/server/maintainItemQuery.html")
 	 public String maintainItemQuery(
-	            HttpSession session,Model model) {
+	            HttpSession session,Model model,
+	            @RequestParam(value = "userName", required = true) String userName
+			 ) {
+		 model.addAttribute("userName", userName);
 		 return "server/maintainItemQuery";
 	 }
 	 
 	 @RequestMapping("/server/maintainItemAddInit.html")
 	 public String maintainItemAddInit(
-	            HttpSession session,Model model) {
-		  
+	            HttpSession session,Model model,
+	            @RequestParam(value = "userName", required = true) String userName   
+			 ) {
+		 model.addAttribute("userName", userName);
 		 return "server/maintainItemAdd";
+	 }
+	 
+	 @RequestMapping("/server/todoTask.html")
+	 public String todoTask(
+	            HttpSession session,Model model,
+	            @RequestParam(value = "userName", required = true) String userName   
+			 ) {
+		 model.addAttribute("userName", userName);
+		 return "server/todoTask";
 	 }
 	 
 	 @ResponseBody
 	 @RequestMapping("/server/maintainItemSave.html")
 	 public String maintainItemSave(
-	            HttpSession session,Model model,@ModelAttribute("process") ProcessItem process) {
+	            HttpSession session,Model model,@ModelAttribute("p") ProcessItem process,
+	            @RequestParam(value = "userName", required = true) String userName   ) {
 		 String res="S";
 		 try {
 			 updateProcess(process);
-			 model.addAttribute("process", process);
+			 session.setAttribute("process", process);
 		 }catch(Exception e) {
 			 res="F";
 		 }
 		 return res;
 	 }
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
+	  
 	 
 	 private void updateProcess(ProcessItem p) {
 		 String currentNode=p.getCurrentNodeName();
 		 if(StringUtil.isBlank(currentNode)) {
 			 p.setCurrentNodeName("统一接单");
 			 p.setActor("DDS");
+			 p.setWgyj("物业管家A");
 		 }else if("统一接单".equals(currentNode)){
 			 p.setCurrentNodeName("现场看擦");
 			 p.setActor("区域负责人A");

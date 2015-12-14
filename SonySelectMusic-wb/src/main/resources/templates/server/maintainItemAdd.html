@@ -20,6 +20,19 @@
 			 $("#trdurationTime").hide();
 			 $("#troverTimes").hide();
 			 $("#trstate").hide();
+		 }else if(userName=='DDS'){
+			 $("#taskName").val("1");
+			 $("#taskName").attr('disabled',true);
+			 $("#customerName").val('王学理');
+			 $("#customerName").attr('readonly',true);
+			 $("#customerLevel").attr('disabled',true);
+			 $("#address").val('林肯公园一区8号楼1单元301');
+			 $("#address").attr('readonly',true);
+			 $("#phone").attr('readonly',true);
+			 $("#phone").val('18611298765');
+			 $("#trpillRecevicePerson").hide();
+			 
+			 $("#isEmergency").attr('disabled',true);
 		 }
 	 }
 	 
@@ -61,7 +74,7 @@
 <form id="aform" th:action="@{/server/maintainItemSave.html}"  method="post" enctype="multipart/form-data"  >
 	<div style="display:none">
 		<input type="text" id="id" name="id" maxlength="100"  />
-		<input type="hidde" name="userName" id="userName" th:value="${session.user.userName}" />
+		<input type="hidde" name="userName" id="userName" th:value="${userName}" />
 	</div>
 
 	 <div id="userAdd">
@@ -87,7 +100,7 @@
 	 		<tr>
 	 			<td align="right" width="100px">客户级别：</td>
 	 			<td width="150px">
-	 				 <select name="customerLevel">
+	 				 <select name="customerLevel" id="customerLevel">
 	 				 	<option>普通</option>
 	 				 	<option>VIP</option>
 	 				 </select>
@@ -153,13 +166,13 @@
 	 		<tr>
 	 			<td align="right" width="100px">物业管家：</td>
 	 			<td width="150px">
-	 				 <input type="text"  name="wgyj" readonly="true" th:value="${session.user.staffName}"/>
+	 				 <input type="text"  name="wgyj" readonly="true"  value="物业管家A"/>
 	 			</td>
 	 		</tr>
 	 		<tr id="trpillRecevicePerson">
 	 			<td align="right" width="100px">接单人：</td>
 	 			<td width="150px">
-	 				 <input type="text" name="pillRecevicePerson" id="pillRecevicePerson" />
+	 				 <input type="text" name="pillRecevicePerson" id="pillRecevicePerson"   />
 	 			</td>
 	 		</tr>
 	 		<tr id="trareaLeader">

@@ -21,7 +21,6 @@ import com.xyc.proj.global.Constants;
  *
  */
 @Controller
-@SessionAttributes("user")
 public class SystemController {
 	
 	 @RequestMapping("/server/doLogin")
@@ -29,19 +28,17 @@ public class SystemController {
 	            @RequestParam(value = "code", required = false) String code,
 	            HttpSession session,Model model) {
 		 SysUser su=(SysUser)Constants.userMap.get(code);
+		 session.setAttribute("user", su);
 		 model.addAttribute("user", su);
-		 return "redirect:/server/index.html";
+		 return "forward:/server/index.html?userName="+su.getUserName();
 	 }
 	 
 
 	 @RequestMapping("/server/index.html")
 	 public String index(
-	            @RequestParam(value = "code", required = false) String code,
+			 @RequestParam(value = "userName", required =false) String userName   ,
 	            Model model, HttpSession session) {
-		 //SysUser su=(SysUser)session.getAttribute("user");
-		 SysUser user = (SysUser) model.asMap().get("user");
-		 model.addAttribute("user", user);
-		 session.setAttribute("taskCount", getTask(session));
+		 session.setAttribute("taskCount", getTask(userName,session));
 		 return "server/index";
 	 }
 	 
@@ -107,13 +104,10 @@ public class SystemController {
 	 }
 
 	 //查询代办任务数量 
-	 private int getTask(HttpSession session) {
-		 SysUser su=(SysUser)session.getAttribute("user");
-		 if(su==null)return 0;
-		 String uname=su.getUserName();
+	 private int getTask(String userName,HttpSession session) {
 		 ProcessItem p=(ProcessItem)session.getAttribute("process");
 		 if(p==null)return 0;
-		 if(uname.equals(p.getActor())) {
+		 if(userName.equals(p.getActor())) {
 			 return 1;
 		 }
 		 return 0;
