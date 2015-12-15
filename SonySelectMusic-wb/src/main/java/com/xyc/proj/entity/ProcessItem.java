@@ -12,6 +12,7 @@ public class ProcessItem {
 	private String isEmergency;
 	private String remarks;
 	private String wgyj="";
+	private String maintainMethod;
 	private String pillRecevicePerson;
 	private String areaLeader;
 	private String surveryPerson;
@@ -171,6 +172,12 @@ public class ProcessItem {
 	}
 	public void setCurrentNodeName(String currentNodeName) {
 		this.currentNodeName = currentNodeName;
+	}
+	public String getMaintainMethod() {
+		return maintainMethod;
+	}
+	public void setMaintainMethod(String maintainMethod) {
+		this.maintainMethod = maintainMethod;
 	}
 	
 

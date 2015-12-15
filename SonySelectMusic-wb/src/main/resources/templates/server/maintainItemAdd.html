@@ -19,6 +19,7 @@
 			 $("#trconstructionLeader").hide();
 			 $("#trdurationTime").hide();
 			 $("#troverTimes").hide();
+			 $("#trMaintainMethod").hide();
 			 $("#trstate").hide();
 		 }else if(userName=='DDS'){
 			 $("#taskName").val("1");
@@ -31,8 +32,37 @@
 			 $("#phone").attr('readonly',true);
 			 $("#phone").val('18611298765');
 			 $("#trpillRecevicePerson").hide();
-			 
+			 $("#trMaintainMethod").hide();
+			 $("#trsurveryPerson").hide();
+			 $("#trarticlePerson").hide();
+			 $("#trprojectFirm").hide();
+			 $("#trconstructionLeader").hide();
+			 $("#appointmentIn").attr('readonly',true);
+			 $("#tractllyIn").hide();
+			 $("#planFinishTime").attr('readonly',true);
+			 $("#tractllyFinishTime").hide();
 			 $("#isEmergency").attr('disabled',true);
+		 }else if(userName=='QYFZR'){//区域负责人
+			 $("#taskName").val("1");
+			 $("#taskName").attr('disabled',true);
+			 $("#customerName").val('王学理');
+			 $("#customerName").attr('readonly',true);
+			 $("#customerLevel").attr('disabled',true);
+			 $("#address").val('林肯公园一区8号楼1单元301');
+			 $("#address").attr('readonly',true);
+			 $("#phone").attr('readonly',true);
+			 $("#phone").val('18611298765');
+			 $("#trpillRecevicePerson").val('调度室A');;
+			 $("#trsurveryPerson").hide();
+			 $("#trprojectFirm").hide();
+			 $("#trconstructionLeader").hide();
+			 $("#appointmentIn").attr('readonly',true);
+			 $("#tractllyIn").hide();
+			 $("#planFinishTime").attr('readonly',true);
+			 $("#tractllyFinishTime").hide();
+			 $("#isEmergency").attr('disabled',true);
+		 }else if(userName=='WXFZR'){
+			 
 		 }
 	 }
 	 
@@ -163,6 +193,12 @@
 	 				<input type="text" id="remarks" name="remarks" size="40" />
 	 			</td>
 	 		</tr>
+	 		<tr id="trMaintainMethod">
+	 			<td align="right" width="100px">维修方案：</td>
+	 			<td width="150px">
+	 				<input type="text" id="maintainMethod" name="maintainMethod" size="40" />
+	 			</td>
+	 		</tr>
 	 		<tr>
 	 			<td align="right" width="100px">物业管家：</td>
 	 			<td width="150px">
@@ -178,7 +214,11 @@
 	 		<tr id="trareaLeader">
 	 			<td align="right" width="100px">区域负责人：</td>
 	 			<td width="150px">
-	 				 <input type="text" id="areaLeader" name="areaLeader" />
+	 				 <select name="areaLeader" id="areaLeader">
+	 				 	<option>区域负责人A</option>
+	 				 	<option>区域负责人B</option>
+	 				 	<option>区域负责人C</option>
+	 				 </select>
 	 			</td>
 	 		</tr>
 	 		<tr id="trsurveryPerson">
@@ -196,7 +236,11 @@
 	 		<tr id="trprojectFirm">
 	 			<td align="right" width="100px">工程单位：</td>
 	 			<td width="150px">
-	 				 <input type="text"  id="projectFirm"/>
+	 			 <select name="projectFirm" id="projectFirm">
+	 				 	<option>工程维修单位A</option>
+	 				 	<option>工程维修单位B</option>
+	 				 	<option>工程维修单位C</option>
+	 				 </select>
 	 			</td>
 	 		</tr>
 	 		<tr id="trconstructionLeader">
@@ -251,6 +295,15 @@
 	 			<td align="right" width="100px">照片：</td>
 	 			<td width="150px">
 	 				 <input type="file"  />
+	 			</td>
+	 		</tr>
+	 		<tr id="trOverTimeReason">
+	 			<td align="right" width="100px">超期原因 ：</td>
+	 			<td width="150px">
+	 				 <select name="overTimeReason" id="overTimeReason">
+	 				 	<option>客户不在家</option>
+	 				 	<option>其他原因</option>
+	 				 </select>
 	 			</td>
 	 		</tr>
 	 		<tr>

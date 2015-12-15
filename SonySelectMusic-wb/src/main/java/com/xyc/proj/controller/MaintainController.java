@@ -103,10 +103,13 @@ public class MaintainController {
 			 p.setWgyj("物业管家A");
 		 }else if("统一接单".equals(currentNode)){
 			 p.setCurrentNodeName("现场看擦");
-			 p.setActor("区域负责人A");
+			 p.setActor("QYFZR");
 		 }else if ("现场看擦".equals(currentNode)) {
 			 p.setCurrentNodeName("制定维修方案");
-			 p.setActor("区域负责人A");
+			 p.setActor("QYFZR");
+		 }else if ("制定维修方案".equals(currentNode)) {
+			 p.setCurrentNodeName("申请备料");
+			 p.setActor("WXFZR");
 		 }
 	 }
 	 

@@ -15,22 +15,22 @@ public class Configure {
 	// 每次自己Post数据给API的时候都要用这个key来对所有字段进行签名，生成的签名会放在Sign这个字段，API收到Post数据的时候也会用同样的签名算法对Post过来的数据进行签名和验证
 	// 收到API的返回的时候也要用这个key来对返回的数据算下签名，跟API的Sign数据进行比较，如果值不一致，有可能数据被第三方给篡改
 
-	public static String key = "1qaz2wsx3edc4rfv5tgb5tghb6yuj78u";
-	public static final String WE_CHAT_APPSECRET="032c3861e23d03907d6eda5a2a79ead0";
+	public static String key = "";
+	public static final String WE_CHAT_APPSECRET="";
 
 	//微信分配的公众号ID（开通公众号之后可以获取到）
-	public static String appID = "wxce20c658c1eb222f";
+	public static String appID = "";
 
 	//微信支付分配的商户号ID（开通公众号的微信支付功能之后可以获取到）
-	public static String mchID = "1286681401";
+	public static String mchID = "";
 	
 	public static String DEVICE_INFO="WEB";
 	
 	public static String nonce_str=RandomStringGenerator.getRandomStringByLength(32);
 	
-	public static String body="幸福家缘家政宝洁服务";
+	public static String body="";
 	
-	public static String detail="幸福家缘家政宝洁服务";
+	public static String detail="";
 	public static String attach="天津";
 	public static String out_trade_no=RandomStringGenerator.getRandomStringByLength(32);
 	public static String fee_type="CNY";
@@ -47,7 +47,7 @@ public class Configure {
 	private static String certLocalPath = "";
 
 	//HTTPS证书密码，默认密码等于商户号MCHID
-	public static String certPassword = "1286681401";
+	public static String certPassword = "";
 
 	//是否使用异步线程的方式来上报API测速，默认为异步模式
 	private static boolean useThreadToDoReport = true;
