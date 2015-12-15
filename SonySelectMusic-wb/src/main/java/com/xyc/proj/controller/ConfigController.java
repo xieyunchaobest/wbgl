@@ -42,6 +42,12 @@ public class ConfigController {
 		 return "server/processDuringAdd";
 	 }
 	 
+	 @RequestMapping("/server/processOverTimeConfig.html")
+	 public String processOverTimeConfig(
+	            HttpSession session,Model model) {
+		 return "server/processOverTimeConfig";
+	 }
+	 
 	 
 	 
 	 

@@ -30,6 +30,10 @@ public class SystemController {
 		 SysUser su=(SysUser)Constants.userMap.get(code);
 		 session.setAttribute("user", su);
 		 model.addAttribute("user", su);
+		 if(session.getAttribute("process")==null) {
+			 session.setAttribute("process", new ProcessItem());
+		 }
+		 
 		 return "forward:/server/index.html?userName="+su.getUserName();
 	 }
 	 
