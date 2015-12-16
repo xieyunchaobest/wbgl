@@ -28,6 +28,8 @@ public class ProcessItem {
 	
 	private String currentNodeName;
 	private String actor;
+	private String prospectResult;
+	
 	public String getTaskName() {
 		return taskName;
 	}
@@ -178,6 +180,12 @@ public class ProcessItem {
 	}
 	public void setMaintainMethod(String maintainMethod) {
 		this.maintainMethod = maintainMethod;
+	}
+	public String getProspectResult() {
+		return prospectResult;
+	}
+	public void setProspectResult(String prospectResult) {
+		this.prospectResult = prospectResult;
 	}
 	
 

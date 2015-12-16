@@ -59,6 +59,7 @@
 	            	}else{
 	            		 alert('操作失败！');
 	            	}
+	            	$('#inputDialog').modal('hide'); 
 	            }
 	        }); 
  	}
@@ -69,6 +70,18 @@
 	});
  	}
  	
+ 	function metarialFill(){
+ 		$("#dvmodal-body").html("").load(basePath+"/server/materialFill.html", function() {
+			$('#inputDialog').modal('show'); 
+	});
+ 	}
+ 	
+ 	$(function(){
+ 		var userName=$("#userName").val();
+ 		if(userName=='CLY'){
+ 			$("#btnFillMetarial").show();
+ 		}
+ 	});
  	
 </script>
 </head>
@@ -193,6 +206,8 @@
 						onclick="javascript:alert('已经成功催单!')">催单</button>
 						<button type="button" name="btnQuery" id="btnQuery"  class="btn btn-info"   
 						onclick="showProcessLog()">流程图/日志</button>
+						<button type="button" name="btnQuery" id="btnFillMetarial"  class="btn btn-info"   
+						onclick="metarialFill()" style="display:none">材料回填</button>
 				</div>
 			</div>
 		</div>
@@ -244,9 +259,11 @@
 		         </div>
 		         <div class="modal-body" id='dvmodal-body' style="height:400px;overflow: scroll;"></div>
 		         <div style="text-align:center;height:60px">
-		            <button type="button" onclick="save();" id="submit"     class="btn btn-danger fl btn-lg" style="border-radius:0px;width:128px;height:34px;line-height:10px;"> 确定 </button>
+		            <button type="button" onclick="save();"   id="btnok"   class="btn btn-danger fl btn-lg" style="border-radius:0px;width:128px;height:34px;line-height:10px;"> 确定 </button>
+		             <button type="button" onclick="save();"   id="btnApplyMetarial"    class="btn btn-danger fl btn-lg" style="border-radius:0px;width:128px;height:34px;line-height:10px;display:none"> 申请材料 </button>
+		             
 		             <button type="button" data-dismiss="modal"
-								class="btn btn-lg btn-blue" style="border-radius:0px;width:128px;height:34px;margin-left:25px;line-height:10px;">取消</button>
+								class="btn btn-lg btn-blue" style="border-radius:0px;width:128px;height:34px;margin-left:25px;line-height:10px;">退回</button>
 		         
 		         </div>
 		      </div>

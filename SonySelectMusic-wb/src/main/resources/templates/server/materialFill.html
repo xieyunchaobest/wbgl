@@ -1,0 +1,152 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	 <script type="text/javascript">
+	 $().ready(function() {
+		 //formValidate();
+	 }); 
+	 
+	 
+	 function save(){ 
+		   var path = basePath+"/server/saveWorker";  
+			$('#aform').attr("action", path).submit(); 
+	 }
+	 
+	 function changeRole(target){
+		 if($(target).val()=='2'){
+			 $("#sdf").show();
+			 $("#asdf").show();
+		 }
+	 }
+	 
+    </script> 
+</head>
+
+<form id="aform" th:action="@{/server/saveWorker}"  method="post" enctype="multipart/form-data"  >
+	<div style="display:none">
+		<input type="text" id="id" name="id" maxlength="100"  />
+	</div>
+
+	 <div id="userAdd">
+	 	<table class="table table-bordered table-striped" >
+	 		<tr>
+	 			<td align="right" width="100px">材料名称</td>
+	 			<td width="150px">
+	 				数量
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right" width="100px">
+	 				 <select>
+		 				<option>涂料</option>
+		 				<option>多乐士面漆</option>
+		 				<option>基膜</option>
+		 				<option>玻璃胶</option>
+		 				<option>壁纸胶</option>
+		 				<option>地砖博华606</option>
+		 				<option>地砖博华白色木纹砖</option>
+		 			</select>
+	 			</td>
+	 			<td width="150px">
+	 				    <input type="text" />
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 		<td align="right" width="100px">
+	 				 <select>
+		 				<option>涂料</option>
+		 				<option>多乐士面漆</option>
+		 				<option>基膜</option>
+		 				<option>玻璃胶</option>
+		 				<option>壁纸胶</option>
+		 				<option>地砖博华606</option>
+		 				<option>地砖博华白色木纹砖</option>
+		 			</select>
+	 			</td>
+	 			<td width="150px">
+	 				    <input type="text" />
+	 			</td>
+	 			</tr>
+	 			<tr>
+	 			<td align="right" width="100px">
+	 				 <select>
+		 				<option>涂料</option>
+		 				<option>多乐士面漆</option>
+		 				<option>基膜</option>
+		 				<option>玻璃胶</option>
+		 				<option>壁纸胶</option>
+		 				<option>地砖博华606</option>
+		 				<option>地砖博华白色木纹砖</option>
+		 			</select>
+	 			</td>
+	 			<td width="150px">
+	 				    <input type="text" />
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 		<td align="right" width="100px">
+	 				 <select>
+		 				<option>涂料</option>
+		 				<option>多乐士面漆</option>
+		 				<option>基膜</option>
+		 				<option>玻璃胶</option>
+		 				<option>壁纸胶</option>
+		 				<option>地砖博华606</option>
+		 				<option>地砖博华白色木纹砖</option>
+		 			</select>
+	 			</td>
+	 			<td width="150px">
+	 				    <input type="text" />
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 		<td align="right" width="100px">
+	 				 <select>
+		 				<option>涂料</option>
+		 				<option>多乐士面漆</option>
+		 				<option>基膜</option>
+		 				<option>玻璃胶</option>
+		 				<option>壁纸胶</option>
+		 				<option>地砖博华606</option>
+		 				<option>地砖博华白色木纹砖</option>
+		 			</select>
+	 			</td>
+	 			<td width="150px">
+	 				    <input type="text" />
+	 			</td>
+	 		</tr>
+	 		<tr><td align="right" width="100px">
+	 				 <select>
+		 				<option>涂料</option>
+		 				<option>多乐士面漆</option>
+		 				<option>基膜</option>
+		 				<option>玻璃胶</option>
+		 				<option>壁纸胶</option>
+		 				<option>地砖博华606</option>
+		 				<option>地砖博华白色木纹砖</option>
+		 			</select>
+	 			</td>
+	 			<td width="150px">
+	 				    <input type="text" />
+	 			</td>
+	 		</tr>
+	 	</table>
+	 </div>
+</form>
+<script th:inline="javascript">
+        /*<![CDATA[*/
+            $('#birthday').datetimepicker({
+                autoclose:true,
+                todayHighlight:true,
+                format: 'yyyy-mm-dd',
+                pickDate: true,  
+                pickTime: false,
+                minView:2
+            });
+         
+            
+        /*]]>*/
+    </script>
+    
+</html>

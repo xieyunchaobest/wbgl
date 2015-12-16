@@ -48,8 +48,8 @@ public class ApplicationStartup implements ApplicationListener<ContextRefreshedE
 		 
 		 SysUser su6=new SysUser();
 		 su6.setId(6l);
-		 su6.setUserName("BLY");
-		 su6.setStaffName("备料员A");
+		 su6.setUserName("CLY");
+		 su6.setStaffName("材料员A");
 		 
 		 Map  userMap=new HashMap();
 		 userMap.put("WYGJ", su1);
@@ -57,7 +57,7 @@ public class ApplicationStartup implements ApplicationListener<ContextRefreshedE
 		 userMap.put("QYFZR", su3);
 		 userMap.put("WBBJL", su4);
 		 userMap.put("WXFZR", su5);
-		 userMap.put("BLY", su6);
+		 userMap.put("CLY", su6);
 		 
 		 return userMap;
 	 }

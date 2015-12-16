@@ -59,6 +59,7 @@
 	            	}else{
 	            		 alert('操作失败！');
 	            	}
+	            	$('#inputDialog').modal('hide'); 
 	            }
 	        }); 
  	}
@@ -316,9 +317,9 @@
 		         </div>
 		         <div class="modal-body" id='dvmodal-body' style="height:400px;overflow: scroll;"></div>
 		         <div style="text-align:center;height:60px">
-		            <button type="button" onclick="save();" id="submit"     class="btn btn-danger fl btn-lg" style="border-radius:0px;width:128px;height:34px;line-height:10px;"> 确定 </button>
+		            <button type="button" onclick="save();" id="submit"  class="btn btn-danger fl btn-lg" style="border-radius:0px;width:128px;height:34px;line-height:10px;"> 确定 </button>
 		             <button type="button" data-dismiss="modal"
-								class="btn btn-lg btn-blue" style="border-radius:0px;width:128px;height:34px;margin-left:25px;line-height:10px;">取消</button>
+								class="btn btn-lg btn-blue" style="border-radius:0px;width:128px;height:34px;margin-left:25px;line-height:10px;">退回</button>
 		         
 		         </div>
 		      </div>

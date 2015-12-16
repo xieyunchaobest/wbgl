@@ -136,6 +136,13 @@ public class MaintainController {
 		 return  "server/materialAdd";
 	 }
 	 
+	 
+	 @RequestMapping("/server/materialFill.html")
+	 public String materialFill(
+	            HttpSession session,Model model ) {
+		 return  "server/materialFill";
+	 }
+	 
 	 private void updateProcess(ProcessItem p) {
 		 String currentNode=p.getCurrentNodeName();
 		 if(StringUtil.isBlank(currentNode)) {
@@ -151,6 +158,9 @@ public class MaintainController {
 		 }else if ("制定维修方案".equals(currentNode)) {
 			 p.setCurrentNodeName("申请备料");
 			 p.setActor("WXFZR");
+		 }else if ("申请备料".equals(currentNode)) {
+			 p.setCurrentNodeName("材料回填");
+			 p.setActor("CLY");
 		 }
 	 }
 	 
