@@ -1,0 +1,183 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>存量查询</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/app/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/app/css/bootstrap-theme.min.css}" />
+<link rel="stylesheet" th:href="@{/app/css/font-awesome.min.css}" />
+<link rel="stylesheet" th:href="@{/app/css/bootstrap-datetimepicker.css}" />
+
+<script th:src="@{/app/js/vendor/jquery-1.11.1.js}"></script>
+<script th:src="@{/app/js/vendor/bootstrap.min.js}"></script>
+<script th:inline="javascript" th:src="@{/app/js/commonSort.js}"></script>
+<script th:inline="javascript" th:src="@{/app/js/commonPage.js}"></script>
+<script th:src="@{/app/js/vendor/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/app/validation/jquery.validate.min.js}"></script>
+<script th:src="@{/app/js/public.js}"></script>
+
+<script type="text/javascript">
+ 	function query(){
+ 		var path = basePath+"/stat/albumAndMusicWithCouponStat";  
+		$('#orderByForm').attr("action", path).submit();
+ 	}
+ 	
+ 	function resetAction(){
+ 		var path = basePath+"/stat/albumAndMusicWithCouponStat";  
+		$('#orderByForm').attr("action", path);
+ 	}
+ 	
+ 	function confirmDelete(){
+ 		var r=confirm("确定要删除该条记录吗？")
+ 		   
+ 	}
+ 	
+ 	function showAddModal(flag){ 
+ 		var url=basePath+"/server/materialAdd.html";
+		$("#dvmodal-body").html("").load(url+"?rn="+Math.random(), function() {
+				$('#inputDialog').modal('show'); 
+		});
+	}
+ 	
+ 
+</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<form id="orderByForm"   method="post">
+			<input type="hidden" id="orderByStr" name="orderByStr"   th:value="${orderBy}"/>
+			<div class="row" id="qry" style="margin-right:15px;">
+		 	<div  class="col-xs-12" style="padding:10px;border:solid 1px #cccccc;margin:15px 15px;padding:10px 10px">
+		 		<div class="col-xs-4" style="width:250px">
+		 		<label>类别:</label>
+		 			<select>
+		 				<option>板材类</option>
+		 				<option>线缆类</option>
+		 				<option>装饰类</option>
+		 			</select>
+		 		</div>	
+		 		 <div class="col-xs-4" style="width:250px">
+		 		<label>名称:</label>
+		 			<input type="text" />
+		 		</div>
+		 		<div class="col-xs-2" style="width:100px">
+		 			<button type="submit" class="btn btn-primary"   name="btnQuery" id="btnQuery"  >查询</button> 
+		 		</div>
+		 	</div>
+		 </div>
+			<div id="tbdata" style="width:100%;overflow: scroll">
+			<table class="table table-bordered table-striped" style="width:100%">
+				<thead>
+					<tr>
+						<th>材料名称</th>
+						<th>规格型号</th>
+						<th>类别</th>
+						<th>单位</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>涂料</td>
+						<td></td>
+						<td>墙饰</td>
+						<td>桶</td>
+					</tr>
+					<tr>
+						<td>壁纸MY-2149-10B</td>
+						<td>1.37cmm*50m/卷</td>
+						<td>墙饰</td>
+						<td>米</td>
+					</tr>
+					<tr>
+						<td>三角形砖</td>
+						<td>300mm*300mm</td>
+						<td>墙饰</td>
+						<td>块</td>
+					</tr>
+					<tr>
+						<td>排风扇</td>
+						<td>FV-17cuv2c</td>
+						<td>电器</td>
+						<td>个</td>
+					</tr>
+				</tbody>
+			</table>
+			<div>
+				<div style="border:1px solid #fffff">
+					 <nav id="tslCommon-Page"  style="float:right">
+			  			<input type="hidden" name="currentPageNum" value="1"/>
+			  			<input type="hidden" name="totalPageCnt" th:value="5"/>
+			  			<input type="hidden" name="totalRecord" th:value="50"/>
+					</nav>
+				</div> 
+				<div style="float: left; margin-right: 15px;">
+					<button type="button" name="btnQuery" id="btnQuery"  class="btn btn-info"   
+						onclick="showAddModal('OUT')">添加</button>
+					<button type="button" name="btnQuery" id="btnQuery"  class="btn btn-info"   
+						onclick="showAddModal('IN')">修改</button>
+					<button type="button" name="btnQuery" id="btnQuery"  class="btn btn-info"   
+						onclick="showAddModal('IN')">删除</button>
+				</div> 
+			</div>
+		</div>
+	</form>
+	
+	<div class="modal fade" id="inputDialog" tabindex="-1" role="dialog"  aria-labelledby="inputDialogLabel" aria-hidden="true">
+		   <div class="modal-dialog">
+		      <div class="modal-content" style="width:800px">
+		         <div class="modal-header">
+		            <button type="button" class="close" 
+		               data-dismiss="modal" aria-hidden="true">
+		                  &times;
+		            </button>
+		            <h4 class="modal-title" id="inputDialoglLabel">出库/入库</h4> 
+		         </div>
+		         <div class="modal-body" id='dvmodal-body'></div>
+		         <div style="text-align:center;height:60px">
+		            <button type="button" id="submit"  onclick="save()"  class="btn btn-danger fl btn-lg" style="border-radius:0px;width:128px;height:34px;line-height:10px;"> 确定 </button>
+		             <button type="button" data-dismiss="modal"
+								class="btn btn-lg btn-blue" style="border-radius:0px;width:128px;height:34px;margin-left:25px;line-height:10px;">取消</button>
+		         
+		         </div>
+		      </div>
+			</div>
+		</div>
+		
+	</div>
+<script th:inline="javascript">
+        /*<![CDATA[*/
+            $('#startTime').datetimepicker({
+                autoclose:true,
+                todayHighlight:true,
+                format: 'yyyy-mm-dd',
+                pickDate: true,  
+                pickTime: false,
+                minView:2
+            });
+        
+            $('#endTime').datetimepicker({
+                autoclose:true,
+                todayHighlight:true,
+                format: 'yyyy-mm-dd',
+                pickDate: true,  
+                pickTime: false ,
+                minView:2
+            });
+            
+            $('#serviceDate').datetimepicker({
+                autoclose:true,
+                todayHighlight:true,
+                format: 'yyyy-mm-dd',
+                pickDate: true,  
+                pickTime: false ,
+                minView:2
+            });
+            
+            
+        /*]]>*/
+    </script>
+
+</body>
+</html>

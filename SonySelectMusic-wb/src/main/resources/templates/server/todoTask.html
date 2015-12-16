@@ -63,6 +63,13 @@
 	        }); 
  	}
  	
+ 	function showProcessLog(){
+ 		$("#dvmodal-body").html("").load(basePath+"/server/processLog.html", function() {
+			$('#inputDialog').modal('show'); 
+	});
+ 	}
+ 	
+ 	
 </script>
 </head>
 <body>
@@ -183,7 +190,9 @@
 						<button type="button" name="btnQuery" id="btnQuery"  class="btn btn-info"   
 						onclick="confirmDelete()">删除</button>
 						<button type="button" name="btnQuery" id="btnQuery"  class="btn btn-info"   
-						onclick="queryMaintainItems()">流程图/日志</button>
+						onclick="javascript:alert('已经成功催单!')">催单</button>
+						<button type="button" name="btnQuery" id="btnQuery"  class="btn btn-info"   
+						onclick="showProcessLog()">流程图/日志</button>
 				</div>
 			</div>
 		</div>

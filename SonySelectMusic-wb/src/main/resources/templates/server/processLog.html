@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	 <script type="text/javascript">
+	 $().ready(function() {
+		 formValidate();
+	 }); 
+	 
+	 function formValidate(){
+		 $("#aform").validate({
+		     	focusInvalid:false	, 
+		     	rules : {
+		     		"name":{
+		     			required:true 
+		     		} , 
+		     		"phone":{
+		     			required:true 
+		     		} , 
+		     		"kmCount":{
+		     			required:true,
+		     			number:true
+		     		},
+		     		"afile":{
+		     			required:$("#carId").val()=='0'
+		     		} 
+		     	},
+		         messages: {
+		             
+		         }
+		     });
+	 }
+	 
+	 
+	 function save(){ 
+		   var path = basePath+"/server/saveWorker";  
+			$('#aform').attr("action", path).submit(); 
+	 }
+	 
+	 function changeRole(target){
+		 if($(target).val()=='2'){
+			 $("#sdf").show();
+			 $("#asdf").show();
+		 }
+	 }
+	 
+    </script> 
+</head>
+
+<form id="aform" th:action="@{/server/saveWorker}"  method="post" enctype="multipart/form-data"  >
+	<div style="display:none">
+		<input type="text" id="id" name="id" maxlength="100"  />
+	</div>
+
+	 <div id="userAdd" class="row">
+	 	 <div class="col-xs-8">
+	 	 	<img th:src="@{/app/img/process.png}" style="width:500px;height:auto"/>
+	 	 </div>
+	 	 <div class="col-xs-4">
+	 	 	<p>2015-12-18 10:12:13  物业管家Ａ　填写申请　历时０小时</p>
+	 	 	<p>2015-12-18 12:19:53  调度室Ａ　统一接单　历时２小时</p>
+	 	 	<p>2015-12-19 09:00:13  区域负责人Ａ　现场勘探　历时９小时</p>
+	 	 	<p>2015-12-19 16:20:30  区域负责人Ａ　制定维修方案　历时７小时</p>
+	 	 	<p>2015-12-19 1７:23:50  施工负责人A  申请备料　历时2小时</p>
+	 	 	<p>2015-12-20 09:23:50  材料员 Ａ　　　材料出库　历时17小时</p>
+	 	 </div>
+	 </div>
+	 
+</form>
+<script th:inline="javascript">
+        /*<![CDATA[*/
+            $('#birthday').datetimepicker({
+                autoclose:true,
+                todayHighlight:true,
+                format: 'yyyy-mm-dd',
+                pickDate: true,  
+                pickTime: false,
+                minView:2
+            });
+         
+            
+        /*]]>*/
+    </script>
+    
+</html>

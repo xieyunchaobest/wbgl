@@ -93,7 +93,48 @@ public class MaintainController {
 		 }
 		 return res;
 	 }
+	 
+	 @RequestMapping("/server/processLog.html")
+	 public String processLog(
+	            HttpSession session,Model model ) {
+		 return  "server/processLog";
+	 }
+	 
+	 @RequestMapping("/server/materialStockQuery.html")
+	 public String stockQuery(
+	            HttpSession session,Model model ) {
+		 return  "server/materialStockQuery";
+	 }
+	 
+	 @RequestMapping("/server/materialInOutQuery.html")
+	 public String materialInOutQuery(
+	            HttpSession session,Model model ) {
+		 return  "server/materialInOutQuery";
+	 }
+	 
+	 @RequestMapping("/server/materialIn.html")
+	 public String materialIn(
+	            HttpSession session,Model model ) {
+		 return  "server/materialIn";
+	 }
+	 
+	 @RequestMapping("/server/materialOut.html")
+	 public String materialOut(
+	            HttpSession session,Model model ) {
+		 return  "server/materialOut";
+	 }
+	 
+	 @RequestMapping("/server/materialQuery.html")
+	 public String materialQuery(
+	            HttpSession session,Model model ) {
+		 return  "server/materialQuery";
+	 }
 	  
+	 @RequestMapping("/server/materialAdd.html")
+	 public String materialAdd(
+	            HttpSession session,Model model ) {
+		 return  "server/materialAdd";
+	 }
 	 
 	 private void updateProcess(ProcessItem p) {
 		 String currentNode=p.getCurrentNodeName();

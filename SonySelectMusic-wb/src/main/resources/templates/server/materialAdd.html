@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	 <script type="text/javascript">
+	 $().ready(function() {
+		 //formValidate();
+	 }); 
+	 
+	 
+	 function save(){ 
+		   var path = basePath+"/server/saveWorker";  
+			$('#aform').attr("action", path).submit(); 
+	 }
+	 
+	 function changeRole(target){
+		 if($(target).val()=='2'){
+			 $("#sdf").show();
+			 $("#asdf").show();
+		 }
+	 }
+	 
+    </script> 
+</head>
+
+<form id="aform" th:action="@{/server/saveWorker}"  method="post" enctype="multipart/form-data"  >
+	<div style="display:none">
+		<input type="text" id="id" name="id" maxlength="100"  />
+	</div>
+
+	 <div id="userAdd">
+	 	<table class="table table-bordered table-striped" >
+	 		<tr>
+	 			<td align="right" width="100px">材料类别：</td>
+	 			<td width="150px">
+	 				  <select>
+		 				<option>板材类</option>
+		 				<option>线缆类</option>
+		 				<option>装饰类</option>
+		 			</select>
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right" width="100px">材料名称：</td>
+	 			<td width="150px">
+	 				<input type="text" />
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right" width="100px">规格：</td>
+	 			<td width="150px">
+	 				<input type="text" />
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right" width="100px">单位：</td>
+	 			<td width="150px">
+	 				<input type="text" />
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<td align="right" width="100px">备注：</td>
+	 			<td width="150px"> <input type="text"   size="40"/></td>
+	 		</tr>
+	 	</table>
+	 </div>
+</form>
+<script th:inline="javascript">
+        /*<![CDATA[*/
+            $('#birthday').datetimepicker({
+                autoclose:true,
+                todayHighlight:true,
+                format: 'yyyy-mm-dd',
+                pickDate: true,  
+                pickTime: false,
+                minView:2
+            });
+         
+            
+        /*]]>*/
+    </script>
+    
+</html>
