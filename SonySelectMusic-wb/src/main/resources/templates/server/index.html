@@ -78,9 +78,11 @@ $().ready(function() {
               	 统计 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#">jmeter</a></li>
-               <li><a href="#">EJB</a></li>
-               <li><a href="#">Jasper Report</a></li>
+               <li><a th:href="@{/server/leveloneItemStatistic.html}" target="contentPage">一级维修项统计</a></li>
+                 <li class="divider"></li>
+               <li><a href="#">二级维修项统计</a></li>
+                 <li class="divider"></li>
+               <li><a th:href="@{/server/areastatistic.html}"  target="contentPage">区域维修项统计</a></li> 
                <li class="divider"></li>
                <li><a href="#">分离的链接</a></li>
                <li class="divider"></li>
