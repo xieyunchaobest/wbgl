@@ -15,7 +15,14 @@
 
 
 $().ready(function() {
-	 $("#contentPage").attr("src",basePath+'/server/queryUser.html'); 
+	var userName=$("#userName").val();
+	var url=basePath+"/server/todoTask.html?userName="+userName;
+	 $("#contentPage").attr("src",url); 
+	 
+	 if(userName=='CLY'){
+		 $("#liconfig").hide();
+		 $("#listatistic").hide();
+	 }
 	 
 });
 
@@ -73,7 +80,7 @@ $().ready(function() {
             </a> 
          </li>
          
-         <li class="dropdown" style="width:200px;text-align: center">
+         <li class="dropdown" style="width:200px;text-align: center" id="listatistic">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               	 统计 <b class="caret"></b>
             </a>
@@ -102,7 +109,7 @@ $().ready(function() {
                 <li class="divider"></li>
             </ul>
           </li>
-          <li class="dropdown" style="width:200px;text-align: center">
+          <li class="dropdown" id="liconfig" style="width:200px;text-align: center">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
           		配置<b class="caret"></b>
           	</a>
