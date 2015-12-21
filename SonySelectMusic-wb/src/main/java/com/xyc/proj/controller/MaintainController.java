@@ -161,6 +161,22 @@ public class MaintainController {
 		 }else if ("申请备料".equals(currentNode)) {
 			 p.setCurrentNodeName("材料回填");
 			 p.setActor("CLY");
+		 }else if ("材料回填".equals(currentNode)) {
+			 p.setCurrentNodeName("上门");
+			 p.setActor("WXFZR");
+		 }else if ("上门".equals(currentNode)) {
+			 p.setCurrentNodeName("维修完成");
+			 p.setActor("WXFZR");
+		 }else if ("维修完成".equals(currentNode)) {
+			 p.setCurrentNodeName("管家确认");
+			 p.setActor("WYGJ");
+		 }else if ("管家确认".equals(currentNode)) {
+			 p.setCurrentNodeName("回访");
+			 p.setActor("DDS");
+		 }else if ("回访".equals(currentNode)) {
+			 p.setCurrentNodeName("结束");
+			 p.setActor("");
+			 p.setState("F");
 		 }
 	 }
 	 

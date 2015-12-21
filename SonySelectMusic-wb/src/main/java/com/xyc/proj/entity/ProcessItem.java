@@ -29,6 +29,7 @@ public class ProcessItem {
 	private String currentNodeName;
 	private String actor;
 	private String prospectResult;
+	private String state;
 	
 	public String getTaskName() {
 		return taskName;
@@ -186,6 +187,12 @@ public class ProcessItem {
 	}
 	public void setProspectResult(String prospectResult) {
 		this.prospectResult = prospectResult;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 

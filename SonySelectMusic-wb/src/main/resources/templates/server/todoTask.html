@@ -78,10 +78,34 @@
  	
  	$(function(){
  		var userName=$("#userName").val();
+ 		var currentNodeName=$("#currentNodeName").val();
  		if(userName=='CLY'){
  			$("#btnFillMetarial").show();
  		}
+ 		if(userName=='WXFZR'){
+ 			if(currentNodeName=='上门'){
+ 				$("#btnArrival").show();
+ 			}
+ 		}
  	});
+ 	
+ 	function confirmArrival(){
+ 		if(confirm('确认已经上门?')){
+ 			$.ajax({
+	            type: "POST",
+	            url: basePath+'/server/maintainItemSave.html',
+	            data:$("#orderByForm").serialize(),
+	            success: function(data) {
+	            	if(data=="S"){
+	            		alert('操作成功!'); 
+	            	}else{
+	            		 alert('操作失败！');
+	            	}
+	            	$('#inputDialog').modal('hide'); 
+	            }
+	        }); 
+ 		}
+ 	}
  	
 </script>
 </head>
@@ -90,7 +114,7 @@
 		<form id="orderByForm"   method="post">
 			<input type="hidden" id="orderByStr" name="orderByStr"   th:value="${orderBy}"/>
 			<input type="hidden" id="userName" name="userName"   th:value="${userName}"/>
-			
+			<input type="hidde" name="currentNodeName" id="currentNodeName" th:value="${session.process.currentNodeName}" />
 			<div class="row" id="qry" style="margin-right:15px;">
 		 	<div  class="col-xs-12" style="padding:10px;border:solid 1px #cccccc;margin:15px 15px;padding:10px 10px">
 		 		<div class="col-xs-4" style="width:250px">
@@ -207,7 +231,9 @@
 						<button type="button" name="btnQuery" id="btnQuery"  class="btn btn-info"   
 						onclick="showProcessLog()">流程图/日志</button>
 						<button type="button" name="btnQuery" id="btnFillMetarial"  class="btn btn-info"   
-						onclick="metarialFill()" style="display:none">材料回填</button>
+						onclick="metarialFill()" style="display:none">材料配出</button>
+						<button type="button" name="btnQuery" id="btnArrival"  class="btn btn-info"   
+						  style="display:none" onclick="confirmArrival()" >确认上门</button>
 				</div>
 			</div>
 		</div>

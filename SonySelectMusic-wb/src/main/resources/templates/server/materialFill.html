@@ -7,12 +7,7 @@
 		 //formValidate();
 	 }); 
 	 
-	 
-	 function save(){ 
-		   var path = basePath+"/server/saveWorker";  
-			$('#aform').attr("action", path).submit(); 
-	 }
-	 
+ 
 	 function changeRole(target){
 		 if($(target).val()=='2'){
 			 $("#sdf").show();
@@ -23,9 +18,11 @@
     </script> 
 </head>
 
-<form id="aform" th:action="@{/server/saveWorker}"  method="post" enctype="multipart/form-data"  >
+<form id="aform" th:action="@{/server/maintainItemSave.html}"  method="post"  enctype="multipart/form-data"  >
 	<div style="display:none">
 		<input type="text" id="id" name="id" maxlength="100"  />
+		<input type="hidde" name="userName" id="userName" th:value="${userName}" />
+		<input type="hidde" name="currentNodeName" id="currentNodeName" th:value="${session.process.currentNodeName}" />
 	</div>
 
 	 <div id="userAdd">
