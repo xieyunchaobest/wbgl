@@ -56,6 +56,8 @@
 	            success: function(data) {
 	            	if(data=="S"){
 	            		alert('操作成功!'); 
+	            	}else if(data=="O"){
+	            		 alert('流程已成功结束！');
 	            	}else{
 	            		 alert('操作失败！');
 	            	}
@@ -86,6 +88,11 @@
  			if(currentNodeName=='上门'){
  				$("#btnArrival").show();
  			}
+ 			if(currentNodeName=='维修完成'){
+ 				$("#btnFinished").show();
+ 				$("#btnok").hide();
+ 				$("#btnApplyMetarial").hide();
+ 			}
  		}
  	});
  	
@@ -114,7 +121,7 @@
 		<form id="orderByForm"   method="post">
 			<input type="hidden" id="orderByStr" name="orderByStr"   th:value="${orderBy}"/>
 			<input type="hidden" id="userName" name="userName"   th:value="${userName}"/>
-			<input type="hidde" name="currentNodeName" id="currentNodeName" th:value="${session.process.currentNodeName}" />
+			<input type="hidden" name="currentNodeName" id="currentNodeName" th:value="${session.process.currentNodeName}" />
 			<div class="row" id="qry" style="margin-right:15px;">
 		 	<div  class="col-xs-12" style="padding:10px;border:solid 1px #cccccc;margin:15px 15px;padding:10px 10px">
 		 		<div class="col-xs-4" style="width:250px">
@@ -287,10 +294,12 @@
 		         <div style="text-align:center;height:60px">
 		            <button type="button" onclick="save();"   id="btnok"   class="btn btn-danger fl btn-lg" style="border-radius:0px;width:128px;height:34px;line-height:10px;"> 确定 </button>
 		             <button type="button" onclick="save();"   id="btnApplyMetarial"    class="btn btn-danger fl btn-lg" style="border-radius:0px;width:128px;height:34px;line-height:10px;display:none"> 申请材料 </button>
-		             
+		             <button type="button" onclick="save();"   id="btnFinished"     class="btn btn-danger fl btn-lg" style="border-radius:0px;width:128px;height:34px;line-height:10px;display:none"> 确认完成 </button>
 		             <button type="button" data-dismiss="modal"
 								class="btn btn-lg btn-blue" style="border-radius:0px;width:128px;height:34px;margin-left:25px;line-height:10px;">退回</button>
-		         
+					
+					
+					 
 		         </div>
 		      </div>
 			</div>

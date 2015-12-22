@@ -9,9 +9,11 @@
 	 }); 
 	 
 	 function initCompuments(){
+		 var currentNodeName=$("#currentNodeName").val();
 		 var userName=$("#userName").val();
 		 $("#btnApplyMetarial").hide();
 		 $("#btnok").show();
+		 $("#trarticlePerson").hide();
 		 var currentNodeName=$("#currentNodeName").val();
 		 if(userName=='WYGJ'){
 			 $("#trpillRecevicePerson").hide();
@@ -26,6 +28,17 @@
 			 $("#trstate").hide();
 			 $("#trOverTimeReason").hide();
 			 $("#trProspectResult").hide();
+			 $("#actllyIn").prop('readonly',true);
+			 $("#actllyFinishTime").prop('readonly',true);
+			 if(currentNodeName=='管家确认'){
+				 $("#customerName").val('王学理');
+				 $("#customerName").attr('readonly',true);
+				 $("#customerLevel").attr('disabled',true);
+				 $("#address").val('林肯公园一区8号楼1单元301');
+				 $("#address").attr('readonly',true);
+				 $("#phone").attr('readonly',true);
+				 $("#phone").val('18611298765');
+			 }
 		 }else if(userName=='DDS'){
 			 $("#taskName").val("1");
 			 $("#taskName").attr('disabled',true);
@@ -50,6 +63,9 @@
 			 $("#trProspectResult").hide();
 			 $("#trOverTimeReason").hide();
 			 $("#troverTimes").hide();
+			 if(currentNodeName=='回访'){
+				 $("#trsurvery").show();
+			 }
 		 }else if(userName=='QYFZR'){//区域负责人
 			 $("#taskName").val("1");
 			 $("#taskName").attr('disabled',true);
@@ -91,6 +107,9 @@
 			 $("#isEmergency").attr('disabled',true);
 			 $("#btnApplyMetarial").show();
 			 $("#btnok").hide();
+			 if(currentNodeName=='维修完成'){
+				 $("#btnApplyMetarial").hide();
+			 }
 		 }else if(userName=='CLY'){
 			 $("#taskName").val("1");
 			 $("#taskName").attr('disabled',true);
@@ -150,8 +169,8 @@
 <form id="aform" th:action="@{/server/maintainItemSave.html}"  method="post" enctype="multipart/form-data"  >
 	<div style="display:none">
 		<input type="text" id="id" name="id" maxlength="100"  />
-		<input type="hidde" name="userName" id="userName" th:value="${userName}" />
-		<input type="hidde" name="currentNodeName" id="currentNodeName" th:value="${session.process.currentNodeName}" />
+		<input type="hidden" name="userName" id="userName" th:value="${userName}" />
+		<input type="hidden" name="currentNodeName" id="currentNodeName" th:value="${session.process.currentNodeName}" />
 	</div>
 
 	 <div id="userAdd">
@@ -274,12 +293,22 @@
 	 				 </select>
 	 			</td>
 	 		</tr>
+	 		<tr id="trsurvery" style="display:none">
+	 			<td align="right" width="100px">回访调查：</td>
+	 			<td width="150px">
+	 				是否按照预约时间准时到达 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" />是 &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" />否<br/>
+	 				施工质量是否达到您的预期 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" />是 &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" />否<br/>
+	 				服务态度是否满意 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" />满意 &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" />不满意<br/>
+	 			</td>
+	 		</tr>
 	 		<tr id="trsurveryPerson">
 	 			<td align="right" width="100px">回访人：</td>
 	 			<td width="150px">
 	 				 <input type="text"  id="surveryPerson" />
 	 			</td>
 	 		</tr>
+	 		
+	 		
 	 		<tr id="trarticlePerson">
 	 			<td align="right" width="100px">备料员：</td>
 	 			<td width="150px">

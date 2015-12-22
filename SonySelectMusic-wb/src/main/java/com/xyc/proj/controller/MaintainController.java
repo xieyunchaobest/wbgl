@@ -91,6 +91,9 @@ public class MaintainController {
 		 }catch(Exception e) {
 			 res="F";
 		 }
+		 if("F".equals(process.getState())) {
+			 res="O";
+		 }
 		 return res;
 	 }
 	 
@@ -143,7 +146,7 @@ public class MaintainController {
 		 return  "server/materialFill";
 	 }
 	 
-	 private void updateProcess(ProcessItem p) {
+	 private ProcessItem updateProcess(ProcessItem p) {
 		 String currentNode=p.getCurrentNodeName();
 		 if(StringUtil.isBlank(currentNode)) {
 			 p.setCurrentNodeName("统一接单");
@@ -178,6 +181,7 @@ public class MaintainController {
 			 p.setActor("");
 			 p.setState("F");
 		 }
+		 return p;
 	 }
 	 
 	 
